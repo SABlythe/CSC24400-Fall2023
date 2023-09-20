@@ -1,6 +1,6 @@
 #include <iostream>
 
-#define SIZE 1
+#define SIZE 100
 #define QUEEN 'Q'
 #define EMPTY ' '
 
@@ -8,7 +8,8 @@ using namespace std;
 
 char theBoard[SIZE][SIZE];
 
-void printRowHeader();
+void printRowHeader(int);
+bool solveBoard(int, int);
 
 bool canPlace(int intoRow, int intoCol)
 {
@@ -47,44 +48,49 @@ bool canPlace(int intoRow, int intoCol)
 	return true;
 }
 
-void initBoard()
+void initBoard(int actualSize)
 {
-	for (int rowIndex = 0; rowIndex < SIZE; rowIndex++)
-		for (int colIndex = 0; colIndex < SIZE; colIndex++)
+	for (int rowIndex = 0; rowIndex < actualSize; rowIndex++)
+		for (int colIndex = 0; colIndex < actualSize; colIndex++)
 			theBoard[rowIndex][colIndex] = EMPTY;
 }
 
-void printBoard()
+void printBoard(int pSize)
 {
 
-	for (int rowIndex = 0; rowIndex < SIZE; rowIndex++)
+	for (int rowIndex = 0; rowIndex < pSize; rowIndex++)
 	{
-		printRowHeader();
+		printRowHeader(pSize);
 		cout << "|";
-		for (int colIndex = 0; colIndex < SIZE; colIndex++)
+		for (int colIndex = 0; colIndex < pSize; colIndex++)
 		{
 			cout << theBoard[rowIndex][colIndex] << '|';
 		}
 		cout << endl;
 	}
-	printRowHeader();
+	printRowHeader(pSize);
 }
 
-void printRowHeader()
+void printRowHeader(int numCols)
 {
-	for (int colIndex = 0; colIndex < SIZE; colIndex++)
+	for (int colIndex = 0; colIndex < numCols; colIndex++)
 		cout << "+-";
 	cout << '+' << endl;
 }
 
-bool solveBoard(int nextColumnNumber)
+bool solveBoard(int probSize)
+{
+	return solveBoard(0, probSize);
+}
+
+bool solveBoard(int nextColumnNumber, int n)
 {
 	// base case
-	if (nextColumnNumber >= SIZE)
+	if (nextColumnNumber >= n)
 		return true;
 
 	// go through every possible move (in this column)
-	for (int nextRowMove = 0; nextRowMove < SIZE; nextRowMove++)
+	for (int nextRowMove = 0; nextRowMove < n; nextRowMove++)
 	{
 		// try to put a queen in this location
 		if (canPlace(nextRowMove, nextColumnNumber))
@@ -92,7 +98,7 @@ bool solveBoard(int nextColumnNumber)
 			// try next move by making it ... 
 			theBoard[nextRowMove][nextColumnNumber] = QUEEN;
 
-			bool solutionFound = solveBoard(nextColumnNumber + 1);
+			bool solutionFound = solveBoard(nextColumnNumber + 1, n);
 
 			if (solutionFound)
 				return true;
@@ -106,15 +112,19 @@ bool solveBoard(int nextColumnNumber)
 
 int main(int argc, char* argv[])
 {
-	initBoard();
-	printBoard();
+	int probSize;
+	cout << "How big is the board? ";
+	cin >> probSize;
+
+	initBoard(probSize);
+	printBoard(probSize);
 
 	cout << endl << endl << "==========================" << endl << endl;
 
-	if (!solveBoard(0))
+	if (!solveBoard(probSize))
 		cout << "NO SOLUTION FOUND!" << endl;
 	else
-		printBoard();
+		printBoard(probSize);
 
 	return 0;
 }
