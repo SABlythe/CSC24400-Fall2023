@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-#include "Queensolver.hpp"
+//#include "Queensolver.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -9,15 +9,17 @@ int main(int argc, char* argv[])
 	cout << "How big is the board? "  << endl;
 	cin >> probSize;
 
-	initBoard(probSize);
-	printBoard(probSize);
+	QueenSolver puzzle;
+
+	puzzle.initBoard(probSize);
+	puzzle.printBoard(probSize);
 
 	cout << endl << endl << "==========================" << endl << endl;
 
-	if (!solveBoard(probSize))
+	if (!puzzle.solveBoard(probSize))
 		cout << "NO SOLUTION FOUND!" << endl;
 	else
-		printBoard(probSize);
+		puzzle.printBoard(probSize);
 
 	return 0;
 }
