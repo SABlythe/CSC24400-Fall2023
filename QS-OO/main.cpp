@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+// this is a new comment
 //#include "Queensolver.hpp"
 
 int main(int argc, char* argv[])
