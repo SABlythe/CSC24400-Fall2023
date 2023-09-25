@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+#include "Queensolver.hpp"
+
 #define SIZE 100
 #define QUEEN 'Q'
 #define EMPTY ' '
@@ -46,27 +48,35 @@ bool canPlace(int intoRow, int intoCol)
 	return true;
 }
 
-void initBoard(int actualSize)
+QueenSolver::QueenSolver(int pSize)
 {
-	for (int rowIndex = 0; rowIndex < actualSize; rowIndex++)
-		for (int colIndex = 0; colIndex < actualSize; colIndex++)
+	_problemSize = pSize;
+	for (int rowIndex = 0; rowIndex < _problemSize; rowIndex++)
+		for (int colIndex = 0; colIndex < _problemSize; colIndex++)
 			theBoard[rowIndex][colIndex] = EMPTY;
 }
 
-void printBoard(int pSize)
+/*
+void QueenSolver::initBoard()
 {
 
-	for (int rowIndex = 0; rowIndex < pSize; rowIndex++)
+}
+*/
+
+void QueenSolver::printBoard()
+{
+
+	for (int rowIndex = 0; rowIndex < _problemSize; rowIndex++)
 	{
-		printRowHeader(pSize);
+		printRowHeader(_problemSize);
 		cout << "|";
-		for (int colIndex = 0; colIndex < pSize; colIndex++)
+		for (int colIndex = 0; colIndex < _problemSize; colIndex++)
 		{
 			cout << theBoard[rowIndex][colIndex] << '|';
 		}
 		cout << endl;
 	}
-	printRowHeader(pSize);
+	printRowHeader(_problemSize);
 }
 
 void printRowHeader(int numCols)
@@ -76,12 +86,12 @@ void printRowHeader(int numCols)
 	cout << '+' << endl;
 }
 
-bool solveBoard(int probSize)
+bool QueenSolver::solveBoard()
 {
-	return solveBoard(0, probSize);
+	return solveBoard(0, _problemSize);
 }
 
-bool solveBoard(int nextColumnNumber, int n)
+bool QueenSolver::solveBoard(int nextColumnNumber, int n)
 {
 	// base case
 	if (nextColumnNumber >= n)
