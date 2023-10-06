@@ -3,19 +3,19 @@ using namespace std;
 
 #include "Queensolver.hpp"
 
-#define SIZE 100
+
 #define QUEEN 'Q'
 #define EMPTY ' '
-char theBoard[SIZE][SIZE];
+
 
 void printRowHeader(int);
 bool solveBoard(int, int);
 
-bool canPlace(int intoRow, int intoCol)
+bool canPlace(int intoRow, int intoCol, char board[][SIZE])
 {
 	// check same row
 	for (int colCheck = intoCol - 1; colCheck >= 0; colCheck--)
-		if (theBoard[intoRow][colCheck] == QUEEN)
+		if (board[intoRow][colCheck] == QUEEN)
 			return false;
 
 	// check UL diagonal
@@ -24,7 +24,7 @@ bool canPlace(int intoRow, int intoCol)
 
 	while (colCheck >= 0 && rowCheck >= 0)
 	{
-		if (theBoard[rowCheck][colCheck] == QUEEN)
+		if (board[rowCheck][colCheck] == QUEEN)
 			return false;
 
 		rowCheck--;
@@ -38,7 +38,7 @@ bool canPlace(int intoRow, int intoCol)
 
 	while (colCheck >= 0 && rowCheck < SIZE)
 	{
-		if (theBoard[rowCheck][colCheck] == QUEEN)
+		if (board[rowCheck][colCheck] == QUEEN)
 			return false;
 
 		rowCheck++;
@@ -101,7 +101,7 @@ bool QueenSolver::solveBoard(int nextColumnNumber, int n)
 	for (int nextRowMove = 0; nextRowMove < n; nextRowMove++)
 	{
 		// try to put a queen in this location
-		if (canPlace(nextRowMove, nextColumnNumber))
+		if (canPlace(nextRowMove, nextColumnNumber, theBoard))
 		{
 			// try next move by making it ... 
 			theBoard[nextRowMove][nextColumnNumber] = QUEEN;
