@@ -13,7 +13,14 @@ public:
 
     void print();
 
-    Complex add(Complex otherNumber);
+    //Complex add(Complex otherNumber);
+    Complex operator+(Complex otherNumber);
+    Complex operator+(double otherNumber);
 };
 
 #endif
+
+
+
+
+
