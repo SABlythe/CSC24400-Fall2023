@@ -18,7 +18,18 @@ public:
     Complex operator+(double otherNumber);
 };
 
+Complex operator+ (double value, Complex cNum);
+
+
 #endif
+
+
+
+
+
+
+
+
 
 
 

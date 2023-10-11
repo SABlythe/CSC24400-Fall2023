@@ -28,6 +28,11 @@ int main(int argc, char *argv[])
     addPi.print();
     cout << endl;
 
+    Complex hmmm;
+    hmmm = pi +myVar;
+    hmmm.print();
+    cout << endl;
+
     return 0;
 }
 
