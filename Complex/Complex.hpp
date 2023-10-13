@@ -1,6 +1,8 @@
 #ifndef _COMPLEX_HPP_
 #define _COMPLEX_HPP_
 
+#include <iostream>
+
 class Complex
 {
 private:
@@ -11,14 +13,20 @@ public:
     Complex(double rVal, double iVal)
     { _real=rVal; _imaginary=iVal; }
 
-    void print();
+    void print(std::ostream &printToThis) const;
 
     //Complex add(Complex otherNumber);
-    Complex operator+(Complex otherNumber);
-    Complex operator+(double otherNumber);
+    Complex operator+(const Complex &otherNumber) const;
+    Complex operator+(double otherNumber) const;
+
+    Complex operator*(const Complex &otherNumber) const;
+    Complex operator*(double otherNumber) const;
+
+    friend Complex operator+ (double value, const Complex &cNum);
+    friend Complex operator* (double value, const Complex &cNum);
 };
 
-Complex operator+ (double value, Complex cNum);
+
 
 
 #endif
