@@ -39,6 +39,13 @@ Complex operator+(double dval, const Complex &c)
 }
 
 Complex
+Complex::operator-() const
+{
+    Complex answer(-_real, -_imaginary);
+    return answer;
+}
+
+Complex
 Complex::operator*(const Complex &otherNumber) const
 {
     Complex addResult;
@@ -61,6 +68,29 @@ Complex operator*(double dval, const Complex &c)
 {
     return c* dval;
 }
+
+ostream& operator<< (ostream &os, const Complex &cNum)
+{
+    cNum.print(os);
+    return os;
+}
+
+// BEGIN BAD CODE
+Complex& doAdd(const Complex &lhs, const Complex &rhs)
+{
+    Complex answer;
+    answer = lhs + rhs;
+    return answer; // UH OH, this is a local variable!!!
+}
+
+
+
+
+
+
+
+
+
 
 
 

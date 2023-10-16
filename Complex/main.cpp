@@ -40,6 +40,18 @@ int main(int argc, char *argv[])
     math.print(cout);
     cout << endl;
 
+    cout << math.imaginary() << endl;
+
+    math.imaginary() = 666;
+    //math.print(cout);
+    cout  << math << endl;
+
+    Complex negatory = -math;
+    cout << "-math = " << negatory << endl;
+    // baaaaad return by reference example
+    //Complex result = doAdd(hmmm, math);
+    //result.print(cout);
+    //cout << endl;
     return 0;
 }
 
