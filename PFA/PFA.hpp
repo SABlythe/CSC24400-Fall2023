@@ -4,13 +4,15 @@
 #include <iostream>
 #include <string>
 
+#define DEFAULT_SIZE 10
+
 class PFA{
 private:
     std::string *_array; // actual array contents
     int _size;           // max number of elements possible
     int _filled;         // current number of elements
 public:
-    PFA();
+    PFA(): _array(new std::string[DEFAULT_SIZE]), _size(DEFAULT_SIZE), _filled(0){}
     void addElement(const std::string &whatToAdd);
     void removeElement(const std::string &whatToRemove);
 
