@@ -13,6 +13,9 @@ private:
     int _filled;         // current number of elements
 public:
     PFA(): _array(new std::string[DEFAULT_SIZE]), _size(DEFAULT_SIZE), _filled(0){}
+
+    int findIndex(const std::string &str) const;
+
     void addElement(const std::string &whatToAdd);
     void removeElement(const std::string &whatToRemove);
 
