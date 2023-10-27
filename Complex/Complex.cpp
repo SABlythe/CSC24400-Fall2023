@@ -9,15 +9,15 @@ void Complex::print(ostream &toMe) const
     toMe << _real << " + " << _imaginary << 'i';
 }
 
-Complex
+const Complex&
 //Complex::add(Complex otherNumber)
 Complex::operator+(const Complex &otherNumber) const
 {
-    Complex addResult;
-    addResult._real = _real + otherNumber._real;
-    addResult._imaginary = _imaginary + otherNumber._imaginary;
+    Complex *addResult=new Complex;
+    addResult->_real = _real + otherNumber._real;
+    addResult->_imaginary = _imaginary + otherNumber._imaginary;
     //_real = -666; // uncomment and the above const gives error
-    return addResult;
+    return *addResult;
 }
 
 Complex

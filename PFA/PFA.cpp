@@ -25,6 +25,25 @@ PFA::findIndex(const std::string &str) const
 void
 PFA::addElement(const std::string &whatToAdd)
 {
+    if (_filled>=_size)
+    {
+        int oldSize=_size;
+        _size = _size*2;                // need twice the size
+        string *backupArray = _array;   // make a backup ptr to "old" array
+        _array = new string[_size];     // allocate a new array
+
+        // copy old items into new array
+        for (int index=0; index<oldSize; index++)
+        {
+            _array[index] = backupArray[index];
+        }
+
+        // clean up the unused array by returning memory to C++
+        //    intentionally left commented out here ...
+        // delete [] backupArray;
+    }
+
+    // add the new element to array at next available slot
     _array[_filled]=whatToAdd;
     _filled++;
 }
@@ -48,6 +67,8 @@ PFA::removeElement(const std::string &whatToRemove)
 std::ostream&
 PFA::print(std::ostream &os) const
 {
+    os <<"Your strings are:" << endl;
+
     for(int index=0; index < _filled; index++)
         os << _array[index] << endl;
 

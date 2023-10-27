@@ -13,13 +13,16 @@ public:
     Complex(double rVal, double iVal)
     { _real=rVal; _imaginary=iVal; }
 
+    double real() const {return _real;}
+    double& real() {return _real;}
+
     double imaginary() const {return _imaginary;}
     double& imaginary() {return _imaginary;}
 
     void print(std::ostream &printToThis) const;
 
     //Complex add(Complex otherNumber);
-    Complex operator+(const Complex &otherNumber) const;
+    const Complex& operator+(const Complex &otherNumber) const;
     Complex operator+(double otherNumber) const;
 
     // unary

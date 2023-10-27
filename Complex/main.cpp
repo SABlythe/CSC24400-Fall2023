@@ -4,6 +4,11 @@ using namespace std;
 
 #include "Complex.hpp"
 
+void mystery(const Complex &cpx)
+{
+    cout << cpx.imaginary() << endl;
+}
+
 int main(int argc, char *argv[])
 {
     Complex myVar;
@@ -43,6 +48,7 @@ int main(int argc, char *argv[])
     cout << math.imaginary() << endl;
 
     math.imaginary() = 666;
+    cout << math.imaginary() << endl;
     //math.print(cout);
     cout  << math << endl;
 
