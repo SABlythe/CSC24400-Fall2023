@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
     names.addElement("thing14");
 
     cout << "names is now:" <<endl;
-    names.print(cout);
+    cout << names;
     cout << "=========" << endl;
 
     return 0;

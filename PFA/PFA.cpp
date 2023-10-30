@@ -75,6 +75,10 @@ PFA::print(std::ostream &os) const
     return os;
 }
 
+ostream& operator<<(ostream &os, const PFA &p)
+{
+    return p.print(os);
+}
 
 
 

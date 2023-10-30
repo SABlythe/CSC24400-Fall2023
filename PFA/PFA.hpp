@@ -22,4 +22,18 @@ public:
     std::ostream& print(std::ostream &os) const;
 };
 
+std::ostream& operator<<(std::ostream &os, const PFA &p);
+
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
