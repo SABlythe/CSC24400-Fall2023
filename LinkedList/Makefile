@@ -3,11 +3,14 @@ CC = g++ -c -Wall -ansi -pedantic -std=c++20
 
 all: sntest
 
-sntest: NodeTest.o StringNode.o
-	g++ -o sntest NodeTest.o StringNode.o
+sntest: NodeTest.o StringNode.o StringList.o
+	g++ -o sntest NodeTest.o StringNode.o StringList.o
 
 NodeTest.o: NodeTest.cpp StringNode.hpp
 	$(CC) NodeTest.cpp
+
+StringList.o: StringList.cpp StringList.hpp StringNode.hpp
+	$(CC) StringList.cpp
 
 StringNode.o: StringNode.cpp StringNode.hpp
 	$(CC) StringNode.cpp
