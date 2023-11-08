@@ -12,7 +12,7 @@ NodeTest.o: NodeTest.cpp StringNode.hpp
 StringList.o: StringList.cpp StringList.hpp StringNode.hpp
 	$(CC) StringList.cpp
 
-StringNode.o: StringNode.cpp StringNode.hpp
+StringNode.o: StringNode.cpp StringNode.hpp StringList.hpp
 	$(CC) StringNode.cpp
 
 clean:

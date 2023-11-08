@@ -23,5 +23,25 @@ int main(int argc, char *argv[])
 
     myl.print(cout);
 
+    cout << "Enter a string to add to Tail: ";
+    string findMe;
+    cin >> findMe;
+
+    myl.addToRear(findMe);
+
+    myl.print(cout);
+
+    StringList startsEmpty;
+    startsEmpty.addToRear("anything");
+
     return 0;
 }
+
+
+
+
+
+
+
+
+

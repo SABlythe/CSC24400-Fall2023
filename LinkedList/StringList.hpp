@@ -17,6 +17,10 @@ public:
     StringNode* &head() {return _head;}
 
     void addToFront(const std::string &newVal);
+    void addToRear(const std::string &newVal);
+
+    StringNode* findNode(std::string &valToFind) const;
+
 
     std::ostream& print(std::ostream &os) const;
 };
