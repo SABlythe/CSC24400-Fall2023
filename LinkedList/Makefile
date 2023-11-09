@@ -6,13 +6,13 @@ all: sntest
 sntest: NodeTest.o StringNode.o StringList.o
 	g++ -o sntest NodeTest.o StringNode.o StringList.o
 
-NodeTest.o: NodeTest.cpp StringNode.hpp
+NodeTest.o: NodeTest.cpp StringNode.hpp StringList.hpp
 	$(CC) NodeTest.cpp
 
 StringList.o: StringList.cpp StringList.hpp StringNode.hpp
 	$(CC) StringList.cpp
 
-StringNode.o: StringNode.cpp StringNode.hpp StringList.hpp
+StringNode.o: StringNode.cpp StringNode.hpp
 	$(CC) StringNode.cpp
 
 clean:
