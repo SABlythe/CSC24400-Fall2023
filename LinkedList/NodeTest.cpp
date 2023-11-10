@@ -34,6 +34,39 @@ int main(int argc, char *argv[])
     StringList startsEmpty;
     startsEmpty.addToRear("anything");
 
+    cout << "Before the new add methods:" << endl;
+    myl.print(cout);
+    string s = "Happy";
+    myl.addAfter("Joy", myl.findNode(s));
+    s = "World";
+    myl.addBefore("Big", myl.findNode(s));
+    s = "Monday";
+    myl.addBefore("Awful", myl.findNode(s));
+    cout << "After the new add methods:" <<endl;
+    myl.print(cout);
+
+    s="Happy";
+    myl.removeValue(s);
+    cout << "After removing Happy:" <<endl;
+    myl.print(cout);
+
+    s = "Hello";
+    StringNode *found = myl.findNode(s);
+    string *ptr = found->pdata();
+    *ptr = "Hi";
+    cout << "After changing Hello to Hi:" <<endl;
+    myl.print(cout);
+
+    s="Happy";
+    myl.removeValue(findMe);
+    cout << "After removing last element:" <<endl;
+    myl.print(cout);
+
+    s="Awful";
+    myl.removeValue(s);
+    cout << "After removing first element:" <<endl;
+    myl.print(cout);
+
     return 0;
 }
 

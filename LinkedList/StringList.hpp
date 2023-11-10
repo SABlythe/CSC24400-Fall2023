@@ -19,7 +19,12 @@ public:
     void addToFront(const std::string &newVal);
     void addToRear(const std::string &newVal);
 
-    StringNode* findNode(std::string &valToFind) const;
+    void addAfter(const std::string &newVal, StringNode *afterThis );
+    void addBefore(const std::string &newVal, StringNode *beforeThis );
+
+    void removeValue(const std::string &valToRemove);
+
+    StringNode* findNode(const std::string &valToFind) const;
 
 
     std::ostream& print(std::ostream &os) const;
