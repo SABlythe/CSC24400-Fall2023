@@ -1,5 +1,7 @@
-#ifndef _INT_BINARY_TREE_HPP_
-#define _INT_BINARY_TREE_HPP_
+#ifndef _INT_BINARY_TREE_NODE_HPP_
+#define _INT_BINARY_TREE_NODE_HPP_
+
+#include <iostream>
 
 class IntBinaryTreeNode
 {
@@ -26,6 +28,10 @@ public:
 
     bool isLeaf() const { return !_left && !_right; }//{return ( (_left==nullptr) && (_right==nullptr) );}
     bool isRoot() const { return !_parent; } // (_parent==nullptr)
+
+    int depth() const;
+
+    std::ostream& print(std::ostream &toStream) const;
 };
 
 
