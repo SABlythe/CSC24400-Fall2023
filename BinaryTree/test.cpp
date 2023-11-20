@@ -21,5 +21,16 @@ int main(int argc, char *argv[])
 
     myTree.print(cout);
 
+    int delVal;
+    cout << "Enter a value to delete (0 to stop): "; 
+    cin >> delVal;
+    while(delVal!=0)
+    {
+        myTree.remove(delVal);
+        myTree.print(cout);
+
+        cout << "Enter a value to delete (0 to stop): "; 
+        cin >> delVal;
+    }
     return 0;
 }
